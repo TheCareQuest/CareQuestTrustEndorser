@@ -1,0 +1,203 @@
+/* Login.css */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+body {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(135deg, #7ebfb3 0%, black 100%);
+  font-family: "Work Sans", sans-serif;
+
+}
+#login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+html {
+  font-size: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(
+    45deg,
+    rgba(226, 243, 243, 0.8),
+    rgba(218, 228, 228, 0.8),
+    rgba(251, 252, 252, 0.8),
+    rgba(213, 251, 252, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
+  backdrop-filter: blur(20px);
+}
+
+#loginform {
+  max-width: 400px;
+  min-width: 300px;
+  max-height: 700px;
+  width: 100%; /* Adjust width for responsiveness */
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.274);
+  border-radius: 25px;
+  border: 1px solid rgb(226, 212, 222);
+  position: relative;
+  backdrop-filter: blur(70px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin: 0 auto; 
+}
+
+#logo {
+  max-width: 100%; /* Make sure the logo doesn't exceed the container width */
+  height: auto; /* Maintain the aspect ratio of the logo */
+ 
+}
+
+#headerTitle {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 2rem;
+  color: rgba(22, 131, 122, 0.9);
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  max-width: 100%;
+}
+
+.row input {
+  width: 80%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(62, 160, 160, 0.2);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.row input:focus {
+  box-shadow: inset 0px -3px 0px 0px rgba(34, 193, 195, 0.7);
+  outline: none;
+}
+
+.row input::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+  font-size: 1rem;
+}
+
+.row input:hover::-webkit-input-placeholder,
+.row input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.row label {
+  align-self: start;
+  padding-left: 2.5rem;
+  padding-bottom: 0.5rem;
+  color: rgba(22, 131, 122, 0.9);
+}
+
+.row button {
+  border-radius: 25px;
+  width: 80%;
+  height: 40px;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 700;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(90deg, #7ebfb3 0%, black 100%);
+  border: 0px;
+  cursor: pointer;
+  transition: opacity 0.25s ease-out;
+}
+
+.row button:hover {
+  opacity: 0.8;
+}
+
+#button {
+  padding-bottom: 1.5rem;
+}
+
+#facebookIcon {
+  background-image: url("https://image.flaticon.com/icons/svg/145/145802.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#twitterIcon {
+  background-image: url("https://image.flaticon.com/icons/svg/145/145812.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#googleIcon {
+  background-image: url("https://image.flaticon.com/icons/svg/145/145804.svg");
+  background-repeat: no-repeat;
+  width: 3rem;
+  height: 3rem;
+}
+
+#iconGroup {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+#iconGroup a {
+  margin: 0 0.6rem;
+}
+
+#alternativeLogin {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 1.5rem;
+}
+.error-message {
+  background-color: #ffdddd;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  max-width: 100%;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox input {
+  margin-right: 0rem;
+}
+
+.forgot-password {
+  margin-left: 0;
+  margin-top: 0.5rem;
+}

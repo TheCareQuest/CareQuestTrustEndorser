@@ -1,0 +1,73 @@
+/* Container Styling */
+.report-form-container {
+  background-color: #ffffff;
+  color: #333;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 50px auto;
+  width: 80%; /* Initial width for larger screens */
+  max-width: 600px; /* Maximum width to ensure readability */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Container Styling */
+@media screen and (max-width: 768px) {
+  .report-form-container {
+    width: 90%; /* Adjust width for medium-sized screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .report-form-container {
+    width: 100%; /* Full width for smaller screens */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Header Styling */
+.report-form-header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Label Styling */
+.report-form-container label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+/* Input and Textarea Styling */
+.report-form-container input,
+.report-form-container textarea {
+  width: 80%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #3498db;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+/* Buttons Styling */
+.report-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+
+/* Confirmation Message Styling */
+.confirmation-message {
+  color: #27ae60;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Image Styling */
+.report-form-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,205 @@
+/* CharityForm.css */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.charity-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-height: 100%; /* Set max-height for the container */
+    overflow-y: auto;
+  scrollbar-width: thin;
+  backdrop-filter: blur(10px);
+
+  scrollbar-color: rgba(22, 131, 122, 0.5) transparent;
+  background: linear-gradient(
+    45deg,
+    rgba(194, 236, 238, 0.8),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8),
+    rgba(193, 233, 233, 0.8),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
+  backdrop-filter: blur(20px);
+}
+
+html {
+  font-size: 100%;
+}
+
+
+
+#headerTitle {
+    font-weight: bold;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 2rem;
+  color: rgba(22, 131, 122, 0.9);
+}
+
+.charity-form {
+    box-sizing: border-box;
+    max-width: 800px;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.603);
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid rgb(52, 163, 148);
+    position: relative;
+    backdrop-filter: blur(20px); /* Adjust the blur amount as needed */
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-height: 80vh; 
+    overflow: auto;
+}
+
+.charity-form h1 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 2rem;
+  color: rgba(22, 131, 122, 0.9);
+}
+
+.charity-form-row {
+  align-items: center;
+  max-width: 100%;
+}
+
+.charity-form-row input {
+  width: calc(80% - 0.5rem);
+  box-sizing: border-box;
+  border: none;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  box-shadow: inset 0px -3px 0px 0px rgba(24, 110, 110, 0.767);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.charity-form-row input:focus {
+  box-shadow: inset 0px -3px 0px 0px rgba(34, 193, 195, 0.7);
+  outline: none;
+}
+
+.charity-form-row input::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+  font-size: 1rem;
+}
+
+.charity-form-row input:hover::-webkit-input-placeholder,
+.charity-form-row input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.charity-form-row label {
+    font-weight: bold;
+ align-content: flex-start;
+  padding-left: 2.5rem;
+  padding-bottom: 0.5rem;
+  color: rgb(24, 110, 110);
+  text-size-adjust: bold;
+}
+
+.charity-form-button-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row; /* Center the buttons */
+  }
+  
+  .charity-form-row button {
+    width: 40%;
+    height: 35px;
+    font-size: 1rem;
+    color: white;
+    font-weight: 12px;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(90deg, #7ebfb3 0%, black 100%);
+    border: 0px;
+    cursor: pointer;
+    transition: opacity 0.25s ease-out;
+  }
+  .charity-form-container::-webkit-scrollbar {
+    width: 10px; /* Adjust width as needed */
+  }
+  
+  .charity-form-container::-webkit-scrollbar-thumb {
+    background-color: rgba(22, 131, 122, 0.5); /* Adjust color as needed */
+  }
+  
+  .charity-form-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+.charity-form-row button:hover {
+  opacity: 0.8;
+}
+
+.charity-form-row .error-message {
+  background-color: #ffdddd;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.charity-form-row input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem; /* Adjust padding as needed */
+    box-shadow: inset 0px -3px 0px 0px rgba(24, 110, 110, 0.767);
+    transition: box-shadow 0.2s ease-in;
+  }
+  
+  .charity-form-row input[type="file"]::-webkit-file-upload-button {
+    padding: 0.5rem; /* Adjust padding as needed */
+    background: linear-gradient(90deg, #7ebfb3 0%, black 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.charity-form-row .error-text {
+    color: #ff0000; /* Set the error text color to red */
+  }
+
+/* Add a media query for responsiveness */
+@media (max-width: 768px) {
+  .charity-form {
+    grid-template-columns: 1fr;
+  }
+
+  .charity-form-row input,
+  .charity-form-row textarea {
+    width: 100%;
+  }
+
+  .charity-form-button-group {
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+  }
+}

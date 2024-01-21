@@ -1,0 +1,12 @@
+.s-head{
+    margin-bottom: 0rem;
+    
+}
+.s-container{
+    justify-content: space-around;
+    gap: 30rem;
+}
+.s-container>img{
+    width: 15rem;
+    height: 50%;
+}

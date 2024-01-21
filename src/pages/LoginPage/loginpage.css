@@ -1,0 +1,115 @@
+/* Container styles */
+.login-page {
+    display: flex;
+    height: 100vh;
+    background: #7ebfb3; /* Green color */
+  }
+  
+  .left-half {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .right-half {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff; /* White color */
+    border-radius: 10px 0 0 10px;
+    position: relative;
+  }
+  
+  /* Form container styles */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .form-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .form-container p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .form-container button {
+    background: #7ebfb3; /* Green color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .form-container button.ghost {
+    background: transparent;
+    border: 1px solid #7ebfb3; /* Green color */
+    color: #7ebfb3; /* Green color */
+    margin-top: 10px;
+  }
+  
+  .form-container button:hover {
+    background: #5c9c90; /* Darker green color on hover */
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .login-page {
+      flex-direction: column;
+    }
+  
+    .left-half, .right-half {
+      border-radius: 0;
+    }
+  }
+  /* Add this CSS in your LoginPage.css or App.css */
+  .ghost {
+    background-color: #ebf2f1;
+    color: #080808;
+    border: 1px solid #d4d8d7;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 12px 45px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    margin-top: 10px;
+  }
+  
+  .ghost:hover {
+    background-color: #e3e6e5;
+    color: #080808;
+  }

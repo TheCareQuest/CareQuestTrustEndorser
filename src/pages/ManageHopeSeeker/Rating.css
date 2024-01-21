@@ -1,0 +1,29 @@
+/* Rating.css */
+
+
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto; /* Center the container and provide some spacing */
+  width: 80%; /* Adjust the width as needed */
+}
+
+.stars {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Add some spacing from the container */
+}
+
+.star {
+  cursor: pointer;
+  margin: 0 5px; /* Add some spacing between stars */
+}
+
+.star.selected {
+  color: gold;
+}
+

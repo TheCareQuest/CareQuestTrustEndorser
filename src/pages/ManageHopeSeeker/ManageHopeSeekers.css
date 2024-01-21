@@ -1,0 +1,136 @@
+/* ManageHopeSeekers.css */
+
+.manage-hope-seekers-container {
+  padding: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(126, 191, 179, 1) 0%,
+    rgba(255, 255, 255, 1) 35%,
+    rgba(216, 241, 236, 1) 100%
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.manage-hope-seekers-header {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #7ebfb3;
+  text-align: center;
+}
+
+.search-bar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  border: 2px solid #7ebfb3;
+  border-radius: 25px;
+  color: #333;
+}
+
+.hope-seekers-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hope-seeker-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background-color: #ecf0f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.hope-seeker-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hope-seeker-details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.profile-picture {
+  width: 50px; /* Adjust the width to your preferred size */
+  height: 50px; /* Adjust the height accordingly */
+  border-radius: 50%;
+  border: 2px solid #7ebfb3;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.info-label {
+  font-weight: bold;
+  margin-right: 8px;
+  color: #555;
+}
+
+.info {
+  color: #333;
+  margin-right: 8px;
+}
+
+.hope-seeker-actions {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.no-results {
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .hope-seeker-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hope-seeker-details {
+    margin-bottom: 10px;
+  }
+
+  .hope-seeker-actions {
+    margin-top: 10px;
+  }
+
+  .hope-seeker-actions button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .hope-seeker-actions info-label,
+  .hope-seeker-actions info {
+    margin-left: 0;
+    margin-top: 10px;
+    display: block; /* Display each span on a new line */
+    margin-right: 1; /* Remove right margin for better spacing */
+  }
+}
+

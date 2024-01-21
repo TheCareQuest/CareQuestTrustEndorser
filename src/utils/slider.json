@@ -1,0 +1,33 @@
+[
+  {
+    "charityTitle": "Free Education Drive",
+    "description": "Sponsor a child's education for their bright future.Join us in providing quality education to all. ",
+    "image": "./edu.png"
+  },
+  {
+    "charityTitle": "Clothing Bank",
+    "description": "Do you have old clothing or household items want to donate? Here is your chance to participate",
+    "image": "./clothes.png"
+  },
+  {
+    "charityTitle": "Free Medical Camp",
+    "description": "Join free medical camp providing essential healthcare services to underserved communities.",
+    "image": "./medicalc.png"
+  },
+  {
+    "charityTitle": "Disaster Fund",
+    "description": "A disaster management fund finances reactive measures for recovery from disasters.",
+    "image": "./disaster.png"
+  },
+  {
+    "charityTitle": " Wheelchair Drive",
+    "description": "Donate a wheelchair initiative aims to improve the lives of individuals with mobility challenges",
+    "image": "./wheelchaird.png"
+  },
+
+  {
+    "charityTitle": "Ration Drive",
+    "description": "A ration drive is a charitable initiative focused on distributing essential food items to those in need.",
+    "image": "./rationdrive.png"
+  }
+]
