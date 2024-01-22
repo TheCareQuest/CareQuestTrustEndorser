@@ -15,6 +15,8 @@ import CharityForm from "./pages/CharityDetails/CharityForm/CharityForm.jsx";
 import TokenPopup from "./pages/Token/TokenPopup.js";
 import Header from "./components/Header/Header.jsx";
 import "./App.css";
+import ManageCareProvider from "./pages/ManageCareProviders/ManageCareProvider.jsx";
+import CpProfile from "./pages/UserProfile/CpProfile.jsx";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -69,6 +71,8 @@ function App() {
           
             <Route index element={<Website />} />
             <Route path="/user/:userId" element={<UserProfile />} />
+            <Route path="/users/:userId" element={<CpProfile />} />
+
             {/* <Route
               path="/user/:userId/report"
               element={<ReportForm />}
@@ -97,6 +101,11 @@ function App() {
               path="charityForm"
               element={<CharityForm />}
             />
+            <Route
+              path="CareProvider"
+              element={<ManageCareProvider/>}
+            />
+          
             <Route
               path="HopeSeeker"
               element={<ManageHopeSeekers />}

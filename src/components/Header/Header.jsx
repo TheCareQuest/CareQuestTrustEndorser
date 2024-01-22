@@ -57,7 +57,7 @@ const Header = ({ handleLogout }) => {
         >
           <div className="flexCenter h-menu" style={getMenuStyles(menuOpened)}>
             <NavLink to="/">Home</NavLink>
-            {/* <NavLink to="/OurCampaigns">Campaigns</NavLink> */}
+            <NavLink to="/CareProvider">Manage CareProvider</NavLink>
             <NavLink to="/HopeSeeker">Manage Hope Seekers</NavLink>
             <NavLink to="/Notification">Notification</NavLink>
             <div className="profile-icon" onClick={handleProfileClick}>
