@@ -1,95 +1,90 @@
 /* Header.css */
+
 .h-wrapper {
-    background-color: transparent;
-    z-index: 99;
-    transition: transform 0.3s ease;
-  }
-  
-  .h-container {
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: var(--secondary);
-    background-color: black; 
-  }
-  
-  .h-menu {
-    gap: 3rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .h-menu > *:hover {
-    cursor: pointer;
-  }
-  
-  .h-menu a:hover {
-    cursor: pointer;
-    color: #7ebfb3
-  }
-  
-  .menu-icon {
-    display: none;
-  }
-  
-  .profile-icon {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-options {
-    position: absolute;
-    width: 160px;
-    top: 30px;
-    right: 0;
-    background-color: #000000;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    z-index: 10;
-  
-    .option {
-      padding: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #1a5c50;
-      }
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .menu-icon {
-      display: block;
-      position: absolute;
-      padding: 1rem; /* Increase padding for touch area */
+  background-color: transparent;
+  z-index: 99;
+  transition: transform 0.3s ease;
+}
+
+.h-container {
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--secondary);
+  background-color: black;
+}
+
+.h-menu {
+  gap: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.h-menu > *:hover {
+  cursor: pointer;
+}
+
+.h-menu a:hover {
+  cursor: pointer;
+  color: #7ebfb3;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
   color: #fff;
-      top: 1rem;
-      right: 1rem;
-    }
-  
-  
-  
-    .h-menu {
-      right: 1rem; /* Adjust the right spacing */
-      top: 4rem;
-      color: var(--black);
-      position: absolute;
-      gap: 2rem;
-      font-weight: 500;
-      flex-direction: column;
-      right: 4rem;
-      top: 3rem;
-      background: rgb(241, 238, 238);
-      display: flex;
-      border-radius: 10px;
-      transition: all 200ms ease;
-      align-items: flex-start;
-      padding: 3rem;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-    }
+}
+
+.profile-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-options {
+  position: absolute;
+  width: 160px;
+  top: 30px;
+  right: 0;
+  background-color: #000000;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.profile-options .option {
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-options .option:hover {
+  background-color: #1a5c50;
+}
+
+@media (max-width: 768px) {
+  .h-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 10;
   }
-  
+
+  .h-menu.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    padding: 1rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}

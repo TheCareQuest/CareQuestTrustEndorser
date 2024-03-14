@@ -33,15 +33,15 @@ const ManageCareProvider = () => {
   <div className='wrapper'>
     <div className="manage-hope-seekers-container">
       <h2 className="primaryText">Manage Care Provider</h2>
-      <div className="search-bar">
+      <div className="searchBar">
         <input
           type="text"
-          placeholder="Search Care Providers"
+          placeholder="Search Hope Seekers"
           value={searchFilter}
           onChange={(e) => setSearchFilter(e.target.value)}
         />
       </div>
-
+     
       {filteredcareProviders.length === 0 && (
         <p className="no-results">No results found for "{searchFilter}".</p>
       )}

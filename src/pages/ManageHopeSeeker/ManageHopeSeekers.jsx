@@ -33,7 +33,7 @@ const ManageHopeSeekers = () => {
   <div className='wrapper'>
     <div className="manage-hope-seekers-container">
       <h2 className="primaryText">Manage Hope Seekers</h2>
-      <div className="search-bar">
+      <div className="searchBar">
         <input
           type="text"
           placeholder="Search Hope Seekers"
@@ -41,7 +41,7 @@ const ManageHopeSeekers = () => {
           onChange={(e) => setSearchFilter(e.target.value)}
         />
       </div>
-
+     
       {filteredHopeSeekers.length === 0 && (
         <p className="no-results">No results found for "{searchFilter}".</p>
       )}

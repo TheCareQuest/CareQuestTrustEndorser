@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './loginForm.css';
 
 const LoginForm = ({ handleLogin }) => {
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
@@ -12,17 +12,30 @@ const LoginForm = ({ handleLogin }) => {
   const [resetLinkSent, setResetLinkSent] = useState(false);
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    if (username === 'shafaq' && password === 'shah123') {
-      handleLogin();
-      navigate('/');
-    } else {
-      setError('Incorrect username or password');
-      setTimeout(() => {
-        setUsername('');
-        setPassword('');
-        setError('');
-      }, 2000);
+const handleLoginClick = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      console.log('Response from backend:', data); // Log the response from backend
+
+      if (response.ok) {
+        console.log('Login successful');
+        handleLogin();
+        navigate('/');
+      } else {
+        console.log('Login failed:', data.message || 'Unknown error');
+        setError(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setError('An error occurred while logging in');
     }
   };
 
@@ -46,10 +59,10 @@ const LoginForm = ({ handleLogin }) => {
       {error && <ErrorMessageBox message={error} />}
       {!showForgotPassword ? (
         <Form
-          username={username}
+          email={email}
           password={password}
           rememberMe={rememberMe}
-          onUsernameChange={(value) => setUsername(value)}
+          onemailChange={(value) => setemail(value)}
           onPasswordChange={(value) => setPassword(value)}
           onRememberMeChange={() => setRememberMe(!rememberMe)}
           onLogin={handleLoginClick}
@@ -69,14 +82,14 @@ const LoginForm = ({ handleLogin }) => {
 
 const FormHeader = ({ title }) => <h2 id="headerTitle">{title}</h2>;
 
-const Form = ({ username, password, rememberMe, onUsernameChange, onPasswordChange, onRememberMeChange, onLogin, onForgotPasswordClick }) => (
+const Form = ({ email, password, rememberMe, onemailChange, onPasswordChange, onRememberMeChange, onLogin, onForgotPasswordClick }) => (
   <div>
     <FormInput
       description="Username"
-      placeholder="Enter your username"
+      placeholder="Enter your email"
       type="text"
-      value={username}
-      onChange={onUsernameChange}
+      value={email}
+      onChange={onemailChange}
     />
     <FormInput
       description="Password"
