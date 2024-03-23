@@ -14,7 +14,7 @@ const UserProfile = ({ onClose }) => {
   const user = {
     name: 'Sana ',
     location: 'Rawalpindi, Pakistan',
-    occupation: 'Labour',
+    Profession: 'Labour',
     need: 'Monthly Ration',
     Charities: 3,
     Reports: 2,
@@ -63,7 +63,7 @@ const UserProfile = ({ onClose }) => {
           <span>{user.location}</span>
         </div>
         <div className="content__description">
-          <p>{user.occupation}</p>
+          <p>{user.Profession}</p>
           <p>{user.need}</p>
         </div>
         <ul className="content__list">
