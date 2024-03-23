@@ -1,4 +1,3 @@
-// ReportForm.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./ReportForm.css";
@@ -8,19 +7,33 @@ const ReportForm = ({ hopeSeeker, onClose }) => {
   const [reportDescription, setReportDescription] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleSubmit = () => {
-    // Placeholder for saving report to the database
-    console.log("Saving report to the database:", {
-      hopeSeeker,
-      reportTitle,
-      reportDescription,
-    });
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/report', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you have a token stored in localStorage after user login
+        },
+        body: JSON.stringify({
+          reportedTo: hopeSeeker._id,
+          title: reportTitle,
+          description: reportDescription,
+        }),
+      });
 
-    setShowConfirmation(true);
-    setTimeout(() => {
-      setShowConfirmation(false);
-      onClose();
-    }, 3000);
+      if (!response.ok) {
+        throw new Error('Failed to submit report');
+      }
+
+      setShowConfirmation(true);
+      setTimeout(() => {
+        setShowConfirmation(false);
+        onClose();
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting report:', error);
+    }
   };
 
   return (

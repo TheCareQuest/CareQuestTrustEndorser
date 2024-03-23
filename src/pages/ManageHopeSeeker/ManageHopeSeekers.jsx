@@ -73,12 +73,10 @@ const handleViewProfile = (user) => {
         {/* Other fields from the backend response */}
       </div>
       <div className="hope-seeker-actions">
-      <button
-                className="button"
-                onClick={() => handleViewProfile(hopeSeeker)}
-              >
-                View Full Profile
-              </button>
+     
+<Link className="button" to={`/user/${hopeSeeker._id}`} state={{ user: hopeSeeker }}>View Full Profile</Link>
+
+
       </div>
     </li>
   ))}
