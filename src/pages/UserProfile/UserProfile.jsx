@@ -66,10 +66,11 @@ const UserProfile = () => {
           </div>
           <div className="content__title">
             <h1>{user.first_name} {user.last_name}</h1>
-            <span>{user.location}</span>
+            <span>{user.username}</span>
           </div>
           <div className="content__description">
             <p>{user.Profession}</p>
+            <p>{user.location}</p>
             <p>{user.need ? user.need : defaultNeed}</p>
           </div>
           <ul className="content__list">
@@ -86,11 +87,15 @@ const UserProfile = () => {
         </div>
         {/* Render Rating form if showRating state is true */}
         {showRating && (
-          <Rating onSubmit={(stars) => console.log(`Rated ${stars} stars for`, user)} onCancel={handleCancelRating} />
-        )}
+  <Rating ratedTo={user.username} onCancel={handleCancelRating} />
+)}
+
         {/* Render Report form if showReportForm state is true */}
         {showReportForm && (
-          <ReportForm hopeSeeker={user} onClose={handleCancelReportForm} />
+          <ReportForm
+            reportedTo={user.username} // Passing reportedTo prop to ReportForm
+            onClose={handleCancelReportForm}
+          />
         )}
       </div>
     </div>
