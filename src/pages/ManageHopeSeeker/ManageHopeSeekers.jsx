@@ -18,7 +18,6 @@ const ManageHopeSeekers = () => {
           throw new Error("Failed to fetch hope seekers");
         }
         const data = await response.json();
-        console.log("Fetched data:", data);  // Debug log
         setHopeSeekers(data.hopeSeekers);
       } catch (error) {
         console.error("Error fetching hope seekers:", error);
