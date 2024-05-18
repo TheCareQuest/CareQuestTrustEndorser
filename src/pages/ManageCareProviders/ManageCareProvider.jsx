@@ -1,89 +1,84 @@
-// ManageHCareProvider.jsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../ManageHopeSeeker/ManageHopeSeekers.css";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-
-import CpProfile from "../UserProfile/CpProfile.jsx";
+import UserProfile from "../UserProfile/UserProfile.jsx";
 
 const ManageCareProvider = () => {
   const navigate = useNavigate();
 
-  const [careProviders, setcareProviders] = useState([
-    { id: 1, name: "Abdullah", cnic: "12345-6789012-3 ", charityCount: 3, profilePicture: "dr.jpg" ,rating:4.5, reports :3},
-    { id: 2, name: "Hamza ", cnic: "98765-4321098-7 ", charityCount: 5, profilePicture: "avatar-rizky-hasanuddin.webp" ,rating:4.5, reports :3},
-    { id: 3, name: "Bilal Abbas ", cnic: "98765-4321098-7 ", charityCount: 5, profilePicture: "profile.jpg",rating:4.5, reports :3 },
-    // Add more hope seekers as needed
-  ]);
-
+  const [careproviders, setcareproviders] = useState([]);
   const [searchFilter, setSearchFilter] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
 
-  const filteredcareProviders = careProviders.filter((seeker) =>
-    seeker.name.toLowerCase().includes(searchFilter.toLowerCase())
-  );
+  useEffect(() => {
+    const fetchCareProviders = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/careproviders");
+        if (!response.ok) {
+          throw new Error("Failed to fetch careproviders");
+        }
+        const data = await response.json();
+        setcareproviders(data.careproviders);
+      } catch (error) {
+        console.error("Error fetching hope seekers:", error);
+      }
+    };
+
+    fetchCareProviders();
+  }, []);
+
+  const filteredcareproviders = careproviders.filter((provider) => {
+    const fullName = `${provider.firstName || ''} ${provider.lastName || ''}`.toLowerCase();
+    return fullName.includes(searchFilter.toLowerCase());
+  });
 
   const handleViewProfile = (user) => {
     setSelectedUser(user);
-    console.log(navigate); // Check if navigate is defined
-    navigate(`/users/${user.id}`);
+    navigate(`/user/${user._id}`);
   };
+
   return (
-  <div className='wrapper'>
-    <div className="manage-hope-seekers-container">
-      <h2 className="primaryText">Manage Care Provider</h2>
-      <div className="searchBar">
-        <input
-          type="text"
-          placeholder="Search Hope Seekers"
-          value={searchFilter}
-          onChange={(e) => setSearchFilter(e.target.value)}
-        />
+    <div className="wrapper">
+      <div className="manage-hope-seekers-container">
+        <h2 className="primaryText">Manage Care Providers</h2>
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="Search Care Providers"
+            value={searchFilter}
+            onChange={(e) => setSearchFilter(e.target.value)}
+          />
+        </div>
+
+        {filteredcareproviders.length === 0 && (
+          <p className="no-results">No results found for "{searchFilter}".</p>
+        )}
+
+        <ul className="hope-seekers-list">
+          {filteredcareproviders.map((careproviders) => (
+            <li key={careproviders._id} className="hope-seeker-item">
+              <div className="hope-seeker-details">
+                <span className="info-label">Name:</span>
+                <span className="info">{careproviders.firstName} {careproviders.lastName}</span>
+                <span className="info-label">CNIC:</span>
+                <span className="info">{careproviders.cnic}</span>
+                <span className="info-label">Email:</span>
+                <span className="info">{careproviders.email}</span>
+                <span className="info-label">Contact Number:</span>
+                <span className="info">{careproviders.contactNumber}</span>
+              </div>
+              <div className="hope-seeker-actions">
+                <Link className="button" to={`/user/${careproviders._id}`} state={{ user: careproviders }}>View Full Profile</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {selectedUser && (
+          <UserProfile user={selectedUser} onClose={() => setSelectedUser(null)} />
+        )}
       </div>
-     
-      {filteredcareProviders.length === 0 && (
-        <p className="no-results">No results found for "{searchFilter}".</p>
-      )}
-
-<ul className="hope-seekers-list">
-        {filteredcareProviders.map((careProvider) => (
-          <li key={careProvider.id} className="hope-seeker-item">
-            <div className="hope-seeker-details">
-              <img
-                src={process.env.PUBLIC_URL + "/" + careProvider.profilePicture}
-                alt="Profile"
-                className="profile-picture"
-              />
-              <span className="info-label"> Name:</span>
-              <span className="info">{careProvider.name }</span>
-              <span className="info-label"> CNIC:</span>
-              <span className="info">{careProvider.cnic }</span>
-              <span className="info-label"> Charity Count:</span>
-              <span className="info">{careProvider.charityCount }</span>
-              <span className="info-label"> Rating:</span>
-              <span className="info">{careProvider.rating }</span>
-            </div>
-            <div className="hope-seeker-actions">
-              <button
-                className="button"
-                onClick={() => {
-                  handleViewProfile(careProvider);
-                  console.log(navigate); // Check if navigate is defined
-                  navigate(`/users/${careProvider.id}`);
-                }}
-              >
-                View Full Profile
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      {selectedUser && (
-        <CpProfile user={selectedUser} onClose={() => setSelectedUser(null)} />
-      )}
-    </div></div>
+    </div>
   );
 };
 

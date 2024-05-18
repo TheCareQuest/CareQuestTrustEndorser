@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Rating from '../ManageHopeSeeker/Rating';
 import ReportForm from '../ManageHopeSeeker/ReportForm';
@@ -7,18 +7,49 @@ const UserProfile = () => {
   const location = useLocation();
   const { user } = location.state || {}; // Access user object from location state
 
+  const [rating, setRating] = useState(null);
+  const [totalReports, setTotalReports] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch rating and total reports for the user from backend
+    const fetchUserData = async () => {
+      try {
+        const responseRating = await fetch(`http://localhost:5000/api/ratings/${user.username}`);
+        if (!responseRating.ok) {
+          throw new Error('Failed to fetch rating');
+        }
+        const ratingData = await responseRating.json();
+        setRating(ratingData.rating);
+
+        const responseReports = await fetch(`http://localhost:5000/api/reports/total/${user.username}`);
+        if (!responseReports.ok) {
+          throw new Error('Failed to fetch total reports');
+        }
+        const totalReportsData = await responseReports.json();
+        setTotalReports(totalReportsData.totalReports);
+
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [user]);
+
   if (!user) {
     return <div>No user data found</div>;
   }
 
   // Static avatar URL
-  const defaultAvatarUrl = process.env.PUBLIC_URL + '/profileh.jpg';
+  const defaultAvatarUrl = process.env.PUBLIC_URL + '/user-avatar.png';
 
   // Default values for properties if they are not present in the user object
   const defaultNeed = 'No specific need';
   const defaultCharities = 0;
-  const defaultReports = 0;
   const defaultRating = 0;
+  const defaultTotalReports = 0;
 
   // Ensure user object is defined and has avatarUrl property or provide a default value
   const avatarUrl = defaultAvatarUrl;
@@ -49,7 +80,6 @@ const UserProfile = () => {
     setShowReportForm(false);
   };
 
-  // Render user profile using user data
   return (
     <div className='wrapper'>
       <div className={`profile-page `}>
@@ -65,12 +95,12 @@ const UserProfile = () => {
             <button className='button' onClick={handleRateClick}>Rate</button>
           </div>
           <div className="content__title">
-            <h1>{user.first_name} {user.last_name}</h1>
+            <h1>{user.firstName} {user.lastName}</h1>
             <span>{user.username}</span>
           </div>
           <div className="content__description">
-            <p>{user.Profession}</p>
-            <p>{user.location}</p>
+            <p>{user.cnic}</p>
+            <p>{user.contactNumber}</p>
             <p>{user.need ? user.need : defaultNeed}</p>
           </div>
           <ul className="content__list">
@@ -78,17 +108,17 @@ const UserProfile = () => {
               <span>{user.Charities ? user.Charities : defaultCharities}</span>Charities
             </li>
             <li>
-              <span>{user.Rating ? user.Rating : defaultRating}</span>Rating
+              <span>{rating !== null ? rating : defaultRating}</span>Rating
             </li>
             <li>
-              <span>{user.Reports ? user.Reports : defaultReports}</span>Reports
+              <span>{totalReports !== null ? totalReports : defaultTotalReports}</span>Reports
             </li>
           </ul>
         </div>
         {/* Render Rating form if showRating state is true */}
         {showRating && (
-  <Rating ratedTo={user.username} onCancel={handleCancelRating} />
-)}
+          <Rating ratedTo={user.username} onCancel={handleCancelRating} />
+        )}
 
         {/* Render Report form if showReportForm state is true */}
         {showReportForm && (
@@ -101,5 +131,4 @@ const UserProfile = () => {
     </div>
   );
 };
-
 export default UserProfile;
